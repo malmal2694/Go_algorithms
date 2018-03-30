@@ -31,18 +31,15 @@ func ComputeLcsTable(x, y string) [][]int {
 	return lenLongSubseq
 }
 func AssembleLcs(x, y string, l [][]int, i, j int) string {
-	ii := fmt.Sprintf("0%s", x)
-	jj := fmt.Sprintf("0%s", y)
-	fmt.Printf("i:%s %d j:%s %d\n", ii, i, jj, j)
+	ii := fmt.Sprintf("0%s", x) //Create ii variable and add "0" character and x variable
+	jj := fmt.Sprintf("0%s", y) //Create jj variable and add "0" character and y variable
+
 	if l[i][j] == 0 {
-		return "" // If l[i, j] equals 0, then return the empty string
-	} else if ii[i] == jj[j] { /*i != 6 && j != 9 && x[i] == y[j] {*/ //x[i-1] == y[j-1] {
-		//		if x[i] == y[j] {
-		a := fmt.Sprintf("%s%c", AssembleLcs(x, y, l, i-1, j-1), ii[i]) // x[i])
+		return "" //If l[i, j] equals 0, then return the empty string
+	} else if ii[i] == jj[j] {
+		//a := fmt.Sprintf("%s%c", AssembleLcs(x, y, l, i-1, j-1), ii[i]) // x[i])
 		fmt.Printf("hello %s   %c\n", a, ii[i])
-		//a = append(a, x[i])
 		return a
-		//		}
 	} else if l[i][j-1] > l[i-1][j] {
 		return AssembleLcs(x, y, l, i, j-1)
 	} else {
